@@ -2,12 +2,13 @@ using UnityEngine;
 
 public abstract class HeroUnitBase : UnitBase {
     private bool _canMove;
-
-
     public float moveSpeed=5f;
     public Transform movePoint;
     public LayerMask notWakeable;
+
     public LayerMask enemy;
+    bool hit;
+
     //public Animator anim;
 
     private void Awake() => GameManager.OnBeforeStateChanged += OnStateChanged;
@@ -17,6 +18,7 @@ public abstract class HeroUnitBase : UnitBase {
     private void OnStateChanged(GameState newState) {
         if (newState == GameState.HeroTurn) _canMove = true;
         movePoint.parent=null;
+        hit=false;
     }
 
     public void Update() {
@@ -49,12 +51,24 @@ public abstract class HeroUnitBase : UnitBase {
                     movePoint.position+=new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
                     _canMove=false;
                 }
+                if(Physics2D.OverlapCircle(movePoint.position+new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),.05f, enemy)&&!hit){
+                    hit=true;
+                    _canMove=false;
+                    GameManager.Instance.ShowText("1 damage dealt", 25, Color.red, transform.position, Vector3.up*32, 1.5f);
+                    GameManager.Instance.ChangeState(GameState.EnemyTurn);
+                }
             }
             else if(Mathf.Abs(Input.GetAxisRaw("Vertical"))==1){
 
                 if(!Physics2D.OverlapCircle(movePoint.position+new Vector3(0, Input.GetAxisRaw("Vertical"), 0),.1f, notWakeable)){
                     movePoint.position+=new Vector3(0, Input.GetAxisRaw("Vertical"), 0);
                     _canMove=false;
+                }
+                if(Physics2D.OverlapCircle(movePoint.position+new Vector3(0, Input.GetAxisRaw("Vertical"), 0),.1f, enemy)){
+                    hit=true;
+                    _canMove=false;
+                    GameManager.Instance.ShowText("1 damage dealt", 25, Color.red, transform.position, Vector3.up*32, 1.5f);
+                    GameManager.Instance.ChangeState(GameState.EnemyTurn);
                 }
 
             }

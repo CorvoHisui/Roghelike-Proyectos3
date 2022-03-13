@@ -15,11 +15,15 @@ public class GameManager : StaticInstance<GameManager> {
 
     public GameObject pauseMenu;
 
+    public FloatingTextManager floatingTextManager;
+
 
     // Kick the game off with the first state
     void Start() => ChangeState(GameState.Starting);
-    private void Update() {
-        
+
+    //FLoatingText
+    public void ShowText(string _msg, int _fontSize, Color _color, Vector3 _position, Vector3 _motion, float _duration){
+        floatingTextManager.Show(_msg,_fontSize,_color,_position,_motion,_duration);
     }
 
     public void ChangeState(GameState newState) {
@@ -84,7 +88,7 @@ public class GameManager : StaticInstance<GameManager> {
         
     }
     private void HandleEnemyTurn(){
-
+        
     }
 }
 
