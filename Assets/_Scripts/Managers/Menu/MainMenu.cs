@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject optionsScreen;
     public void StartGame(){
-        LevelLoader.Instance.LoadScene(Loader.Scene.LevelOne);
+        LevelLoader.instance.LoadScene(Loader.Scene.LevelOne);
     }
     public void OpenOptions(){
         optionsScreen.SetActive(true);
@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour
         optionsScreen.SetActive(false);
     }
     public void QuitApp(){
+        
+        Application.Quit();
         
     }
     

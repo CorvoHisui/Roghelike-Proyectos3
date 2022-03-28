@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void LoadMenu(){
-        LevelLoader.Instance.LoadScene(Loader.Scene.MainMenu);
+        LevelLoader.instance.LoadScene(Loader.Scene.MainMenu);
     }
 
     void Pause(){

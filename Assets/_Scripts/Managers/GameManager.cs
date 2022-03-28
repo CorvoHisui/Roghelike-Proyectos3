@@ -1,104 +1,83 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Nice, easy to understand enum-based game manager. For larger and more complex games, look into
-/// state machines. But this will serve just fine for most games.
-/// </summary>
-public class GameManager : StaticInstance<GameManager> {
-    public static event Action<GameState> OnBeforeStateChanged;
-    public static event Action<GameState> OnAfterStateChanged;
-
-    public GameState State { get; private set; }
-    private GameObject _player;
-    private HeroUnitBase _playerUnitBase;
-
-    public GameObject pauseMenu;
+public enum GameState {PlayerTurn, EnemyTurn, Win, GameOver}
+public class GameManager : MonoBehaviour
+{
+    public static GameManager instance=null;
+    public GameState currState;
 
     public FloatingTextManager floatingTextManager;
 
+    public List<Enemy> enemies;
 
-    // Kick the game off with the first state
-    void Start() => ChangeState(GameState.Starting);
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if(instance==null)
+            instance=this;
+        else if(instance!=this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
 
-    //FLoatingText
-    public void ShowText(string _msg, int _fontSize, Color _color, Vector3 _position, Vector3 _motion, float _duration){
-        floatingTextManager.Show(_msg,_fontSize,_color,_position,_motion,_duration);
+        //List with remaining enemy actions
+        enemies=new List<Enemy>();
+
+        //Start
+        InitGame();
     }
+    void InitGame(){
+        currState = GameState.PlayerTurn;
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        switch (currState)
+        {
+            case GameState.PlayerTurn:
+                HandlePlayerTurn();
+            break;
 
-    public void ChangeState(GameState newState) {
-        OnBeforeStateChanged?.Invoke(newState);
-
-        State = newState;
-        switch (newState) {
-            case GameState.Starting:
-                HandleStarting();
-                break;
-            case GameState.SpawningHeroes:
-                HandleSpawningHeroes();
-                break;
-            case GameState.SpawningEnemies:
-                HandleSpawningEnemies();
-                break;
-            case GameState.HeroTurn:
-                HandleHeroTurn();
-                break;
             case GameState.EnemyTurn:
                 HandleEnemyTurn();
-                break;
-            case GameState.Win:
-                break;
-            case GameState.Lose:
-                break;
+            break;
+
+            case GameState.GameOver:
+                HandleGameOver();
+            break;
+
             default:
-                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+            return;
         }
-
-        OnAfterStateChanged?.Invoke(newState);
-        
-        Debug.Log($"New state: {newState}");
     }
 
-    private void HandleStarting() {
-        // Do some start setup, could be environment, cinematics etc
-        _player=GameObject.FindGameObjectWithTag("Player");
-        _playerUnitBase=_player.GetComponent<HeroUnitBase>();
+    public void HandlePlayerTurn(){
 
-        // Eventually call ChangeState again with your next state
-        ChangeState(GameState.SpawningHeroes);
+    }
+    public void HandleEnemyTurn(){
+        if(enemies.Count==0)
+            currState=GameState.PlayerTurn;
+
+        else{
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                //enemies[0].GetComponent<Enemy>().DoAction();
+            }
+            enemies.Clear();
+            currState=GameState.PlayerTurn;
+        }
+    }
+    public void HandleGameOver(){
+        LevelLoader.instance.LoadScene(Loader.Scene.MainMenu);
     }
 
-    private void HandleSpawningHeroes() {
-        
-        ChangeState(GameState.SpawningEnemies);
-    }
 
-    private void HandleSpawningEnemies() {
-        
-        // Spawn enemies
-        
-        ChangeState(GameState.HeroTurn);
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration){
+        floatingTextManager.Show(msg,fontSize,color,position,motion,duration);
     }
-
-    private void HandleHeroTurn() {
-        // If you're making a turn based game, this could show the turn menu, highlight available units etc
-
-        // Keep track of how many units need to make a move, once they've all finished, change the state. This could
-        // be monitored in the unit manager or the units themselves.
-        
+    public void AddEnemyToList(Enemy script){
+        enemies.Add(script);
     }
-    private void HandleEnemyTurn(){
-        
-    }
-}
-
-[Serializable]
-public enum GameState {
-    Starting = 0,
-    SpawningHeroes = 1,
-    SpawningEnemies = 2,
-    HeroTurn = 3,
-    EnemyTurn = 4,
-    Win = 5,
-    Lose = 6,
 }
