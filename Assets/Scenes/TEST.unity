@@ -332,10 +332,8 @@ MonoBehaviour:
   - {fileID: 5773160965620047664, guid: 06df16e0ed1d9e64397116bae49cebd0, type: 3}
   leftRooms: []
   rightRooms: []
-  closedRooms: {fileID: 0}
+  closedRooms: {fileID: 7434664962509220569, guid: b79dfd5660dfeec469c40c255c6937aa, type: 3}
   rooms: []
-  waitTime: 2
-  boss: {fileID: 0}
 --- !u!4 &1779662522
 Transform:
   m_ObjectHideFlags: 0
@@ -350,6 +348,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1897909064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8798204142713287847, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
+  m_PrefabInstance: {fileID: 708345300336603072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!19719996 &1897909068
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897909064}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1001 &708345300336603072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -368,6 +387,10 @@ PrefabInstance:
     - target: {fileID: 668678634661322305, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: m_Name
       value: EntryRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 668678634661322305, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 989974638255705792, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: openingDirection
@@ -427,7 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2212029603602938752, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2212029603602938752, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5747644664069719126, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: openingDirection
@@ -439,19 +466,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7669851173018131457, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 7980069196653097300, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 8516392787392975278, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: m_Name
       value: SpawnPoint L
       objectReference: {fileID: 0}
+    - target: {fileID: 8798204142713287847, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
+      propertyPath: m_Name
+      value: Walls
+      objectReference: {fileID: 0}
     - target: {fileID: 8930375717113578491, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35da99552f2b8f47aa8c37cd4640767, type: 3}

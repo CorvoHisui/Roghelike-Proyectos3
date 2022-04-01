@@ -10,6 +10,10 @@ public class Interactable : MonoBehaviour, IInteract
     protected bool hasInteracted;
     protected GameObject entity;
 
+    // void Awake()
+    // {
+    //     playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    // }
     public virtual void Interact(){
         if (entity == null || hasInteracted){
             return;
@@ -21,25 +25,31 @@ public class Interactable : MonoBehaviour, IInteract
     public GameObject GetCurrentEntity(){
         return entity;
     }
-    public void Start()
-    {
+    // private void OnTriggerEnter2D(Collider2D other) {
+
+    //     PlayerController playerController = other.GetComponentInParent<PlayerController>();
+    //     if(playerController !=null &&  !hasInteracted){
+    //         entity=this.gameObject;
+    //         playerController.SetLastInteractable(entity);
+
+    //         if(isTriggerInstant){
+    //             playerController.onPressAction();
+    //         }
+    //     }
         
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other!=null && !hasInteracted){
-            entity=this.gameObject;
-            playerController.SetLastInteractable(this);
-        }
-        if(isTriggerInstant){
-            playerController.onPressAction();
-        }
-    }
+    // }
     private void OnTriggerStay2D(Collider2D other) {
-        if(other!=null && !hasInteracted){
+        Debug.Log("trigger");
+        PlayerController playerController = other.GetComponentInParent<PlayerController>(); //other no tiene padre
+
+        if(playerController !=null && !hasInteracted){
             entity=this.gameObject;
-            playerController.SetLastInteractable(this);
+            playerController.SetLastInteractable(entity);
+            if(isTriggerInstant){
+                playerController.onPressAction();
+            }
         }
-        else if(other!=null && hasInteracted){
+        else if(playerController !=null && hasInteracted){
             entity=null;
             playerController.SetLastInteractable(null);
         }
