@@ -10,10 +10,6 @@ public class Interactable : MonoBehaviour, IInteract
     protected bool hasInteracted;
     protected GameObject entity;
 
-    // void Awake()
-    // {
-    //     playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    // }
     public virtual void Interact(){
         if (entity == null || hasInteracted){
             return;
@@ -40,22 +36,24 @@ public class Interactable : MonoBehaviour, IInteract
     // }
     private void OnTriggerStay2D(Collider2D other) {
         Debug.Log("trigger");
-        PlayerController playerController = other.GetComponentInParent<PlayerController>(); //other no tiene padre
+        playerController = GameManager.instance.playerController;
 
         if(playerController !=null && !hasInteracted){
             entity=this.gameObject;
-            playerController.SetLastInteractable(entity);
+            //have to get interactable scrip instead of specific variation
+            playerController.SetLastPickable(entity);
             if(isTriggerInstant){
                 playerController.onPressAction();
             }
         }
         else if(playerController !=null && hasInteracted){
             entity=null;
-            playerController.SetLastInteractable(null);
+            playerController.SetLastPickable(null);
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
+        playerController = GameManager.instance.playerController;
         entity=null;
-        playerController.SetLastInteractable(null);
+        playerController.SetLastPickable(null);
     }
 }

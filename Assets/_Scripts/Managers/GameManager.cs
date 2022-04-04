@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance=null;
     public GameState currState;
 
+    public PlayerController playerController;
+
     public FloatingTextManager floatingTextManager;
 
     public List<Enemy> enemies;

@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour
         slider.value=health;
 
         fill.color=gradient.Evaluate(1f); //Shows right color
+        fill.color=gradient.Evaluate(1f);
 
 
     }

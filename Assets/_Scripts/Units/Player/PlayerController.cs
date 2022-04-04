@@ -51,9 +51,9 @@ public class PlayerController : MonoBehaviour
         MoveMotor();
         
     }
-    public void SetLastInteractable(GameObject _LastInteractable)
+    public void SetLastPickable(GameObject _LastInteractable)
     {
-        lastInteractable = _LastInteractable.GetComponent<Interactable>();
+        lastInteractable = _LastInteractable.GetComponent<Pickable>();
         // notify all listeners
         onInteractableChangedCallback.Invoke();     
     }
