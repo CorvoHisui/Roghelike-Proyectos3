@@ -13,7 +13,7 @@ public class RoomTemplates : MonoBehaviour
 
     public List<GameObject> rooms;
 
-    /*
+    
     public float waitTime;
     bool spawnedBoss;
     public GameObject boss;
@@ -34,5 +34,5 @@ public class RoomTemplates : MonoBehaviour
             waitTime-=Time.deltaTime;
         }
     }
-    */
+    
 }

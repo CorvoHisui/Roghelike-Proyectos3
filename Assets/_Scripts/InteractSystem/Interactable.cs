@@ -9,7 +9,6 @@ public class Interactable : MonoBehaviour, IInteract
     public bool isTriggerInstant;
     protected bool hasInteracted;
     protected GameObject entity;
-
     public virtual void Interact(){
         if (entity == null || hasInteracted){
             return;
@@ -21,39 +20,41 @@ public class Interactable : MonoBehaviour, IInteract
     public GameObject GetCurrentEntity(){
         return entity;
     }
-    // private void OnTriggerEnter2D(Collider2D other) {
+     /* 
+    private void OnTriggerEnter2D(Collider2D other) {
 
-    //     PlayerController playerController = other.GetComponentInParent<PlayerController>();
-    //     if(playerController !=null &&  !hasInteracted){
-    //         entity=this.gameObject;
-    //         playerController.SetLastInteractable(entity);
+        playerController = GameManager.instance.playerController;
 
-    //         if(isTriggerInstant){
-    //             playerController.onPressAction();
-    //         }
-    //     }
+        if(playerController !=null &&  !hasInteracted){
+            entity=this.gameObject;
+            playerController.SetLastInteractable(entity);
+
+            if(isTriggerInstant){
+                playerController.onPressAction();
+            }
+        }
         
-    // }
+    } */
+    
     private void OnTriggerStay2D(Collider2D other) {
         Debug.Log("trigger");
         playerController = GameManager.instance.playerController;
-
         if(playerController !=null && !hasInteracted){
             entity=this.gameObject;
             //have to get interactable scrip instead of specific variation
-            playerController.SetLastPickable(entity);
+            playerController.SetLastInteractable(entity);
             if(isTriggerInstant){
                 playerController.onPressAction();
             }
         }
         else if(playerController !=null && hasInteracted){
             entity=null;
-            playerController.SetLastPickable(null);
+            playerController.SetLastInteractable(entity);
         }
-    }
+    } 
     private void OnTriggerExit2D(Collider2D other) {
         playerController = GameManager.instance.playerController;
         entity=null;
-        playerController.SetLastPickable(null);
+        playerController.SetLastInteractable(entity);
     }
 }

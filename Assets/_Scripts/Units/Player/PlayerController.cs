@@ -51,11 +51,18 @@ public class PlayerController : MonoBehaviour
         MoveMotor();
         
     }
-    public void SetLastPickable(GameObject _LastInteractable)
+    public void SetLastInteractable(GameObject _LastInteractable)
     {
-        lastInteractable = _LastInteractable.GetComponent<Pickable>();
+        if(_LastInteractable==null){
+            lastInteractable=null;
+        }
+        else{
+            lastInteractable = _LastInteractable.GetComponent<Interactable>();
+            onInteractableChangedCallback?.Invoke(); 
+        }
+        
         // notify all listeners
-        onInteractableChangedCallback.Invoke();     
+            
     }
     
 
@@ -99,7 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             lastInteractable.Interact();
             // notify all listeners that player has interacted with 'faced interactable object'
-            onInteractionCallback.Invoke();     
+            onInteractionCallback?.Invoke();     
         }
     }
     
