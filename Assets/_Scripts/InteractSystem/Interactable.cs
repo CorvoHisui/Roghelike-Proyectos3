@@ -45,6 +45,7 @@ public class Interactable : MonoBehaviour, IInteract
             playerController.SetLastInteractable(entity);
             if(isTriggerInstant){
                 playerController.onPressAction();
+                Debug.Log("Pressed Action");
             }
         }
         else if(playerController !=null && hasInteracted){
@@ -55,6 +56,6 @@ public class Interactable : MonoBehaviour, IInteract
     private void OnTriggerExit2D(Collider2D other) {
         playerController = GameManager.instance.playerController;
         entity=null;
-        playerController.SetLastInteractable(entity);
+        playerController.SetLastInteractable(null);
     }
 }

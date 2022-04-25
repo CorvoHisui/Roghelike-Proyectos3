@@ -43,8 +43,9 @@ public class PlayerController : MonoBehaviour
         movePoint.parent=null;
         lastDirectionPoint.parent=null;
 
-        currHealth=maxHealth;
+        currHealth=3;
         healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currHealth);
     }
     void Update()
     {
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
  
         if (Vector3.Distance(transform.position, movePoint.position) >= .001f)
         {
+            GameManager.instance.currState=GameManager.GameState.EnemyTurn;
             return;
         }
         Vector3 lastPosition = transform.position;
@@ -83,15 +85,16 @@ public class PlayerController : MonoBehaviour
 
             movePoint.position += new Vector3(movement.x, 0f, 0f);
             lastMovement=movement;
+
             
         }
         else if (Mathf.Abs(movement.y) == 1f){
             
             movePoint.position += new Vector3(0f, movement.y, 0f);
             lastMovement=movement;
+
             
         }
-        
         
         //Check overlap
         if (Physics2D.OverlapCircle(movePoint.position, .05f, stopMovementMask)){

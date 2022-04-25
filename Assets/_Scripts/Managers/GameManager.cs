@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState {PlayerTurn, EnemyTurn, Win, GameOver}
+
 public class GameManager : MonoBehaviour
 {
+    public enum GameState {PlayerTurn, EnemyTurn, Win, GameOver}
+
     public static GameManager instance=null;
     public GameState currState;
 
@@ -12,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public FloatingTextManager floatingTextManager;
 
-    public List<Enemy> enemies;
+    public List<EnemyAi> enemies;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //List with remaining enemy actions
-        enemies=new List<Enemy>();
+        enemies=new List<EnemyAi>();
 
         //Start
         InitGame();
@@ -56,7 +58,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void HandlePlayerTurn(){
-
     }
     public void HandleEnemyTurn(){
         if(enemies.Count==0)
@@ -65,9 +66,10 @@ public class GameManager : MonoBehaviour
         else{
             for (int i = 0; i < enemies.Count; i++)
             {
-                //enemies[0].GetComponent<Enemy>().DoAction();
+                enemies[0].GetComponent<EnemyAi>().FindPath();
             }
             enemies.Clear();
+            
             currState=GameState.PlayerTurn;
         }
     }
@@ -79,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration){
         floatingTextManager.Show(msg,fontSize,color,position,motion,duration);
     }
-    public void AddEnemyToList(Enemy script){
+    public void AddEnemyToList(EnemyAi script){
         enemies.Add(script);
     }
 }

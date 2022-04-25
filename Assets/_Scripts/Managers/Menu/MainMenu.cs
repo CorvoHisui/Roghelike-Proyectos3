@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject optionsScreen;
     public void StartGame(){
-        LevelLoader.instance.LoadScene(Loader.Scene.LevelOne);
+        LevelLoader.instance.LoadScene(Loader.Scene.Taberna_1);
     }
     public void OpenOptions(){
         optionsScreen.SetActive(true);

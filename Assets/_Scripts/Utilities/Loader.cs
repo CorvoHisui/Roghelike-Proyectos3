@@ -8,7 +8,7 @@ public class Loader : MonoBehaviour
     public static Loader instance=null;
     public enum Scene{
         MainMenu,
-        Taberna,
+        Taberna_1,
         LevelOne,
     }
     void Awake()

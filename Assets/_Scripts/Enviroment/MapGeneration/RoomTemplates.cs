@@ -15,7 +15,7 @@ public class RoomTemplates : MonoBehaviour
 
     
     public float waitTime;
-    bool spawnedBoss;
+    public bool spawnedBoss;
     public GameObject boss;
     
 
@@ -27,8 +27,11 @@ public class RoomTemplates : MonoBehaviour
                 if(i==rooms.Count-1){
                     Instantiate(boss, rooms[i].transform.position,Quaternion.identity);
                     spawnedBoss=true;
+                    Debug.Log("SpawnedPortal");
                 }
             }
+
+            
         }
         else{
             waitTime-=Time.deltaTime;
