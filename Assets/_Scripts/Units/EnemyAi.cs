@@ -12,7 +12,7 @@ public class EnemyAi : MonoBehaviour
     Path path;
     int currentWaypoint=0;
     bool reachedEndOfPath=false;
-    bool turnMade;
+    public bool turnMade;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -25,8 +25,9 @@ public class EnemyAi : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Move()
     {
+        FindPath();
         MoveMotor();
     }
 
@@ -57,7 +58,7 @@ public class EnemyAi : MonoBehaviour
 
         rb.AddForce(force);
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint+1]);
         if(distance<nextWaypointDistance){
             turnMade=true;
         }

@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
             break;
 
             case GameState.EnemyTurn:
-                HandleEnemyTurn();
+            
+                    HandleEnemyTurn();
             break;
 
             case GameState.GameOver:
@@ -56,23 +57,47 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
-
+    bool enemyTurnHandled=false;
     public void HandlePlayerTurn(){
     }
     public void HandleEnemyTurn(){
+        if(CheckIfTurnEnded())
+        {
+             for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].GetComponent<EnemyAi>().turnMade=false;
+            } 
+        
+            currState = GameState.PlayerTurn;
+        }
+        //Logica del turno
         if(enemies.Count==0)
             currState=GameState.PlayerTurn;
-
         else{
+            
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[0].GetComponent<EnemyAi>().FindPath();
+                enemies[i].GetComponent<EnemyAi>().Move();
             }
-            enemies.Clear();
-            
-            currState=GameState.PlayerTurn;
         }
+
     }
+    
+    private bool CheckIfTurnEnded(){
+
+        bool enemyTurnFinished=false;
+        for (int i = 0; i < enemies.Count; i++){
+                if(enemies[i].GetComponent<EnemyAi>().turnMade){
+                    enemyTurnFinished=true;
+                }
+                else{
+                    return false;
+                }
+        
+        }
+        return enemyTurnFinished;
+    }
+
     public void HandleGameOver(){
         LevelLoader.instance.LoadScene(Loader.Scene.MainMenu);
     }
