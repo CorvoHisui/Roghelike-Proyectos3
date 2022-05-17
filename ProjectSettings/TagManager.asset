@@ -52,3 +52,6 @@ TagManager:
   - name: Wall
     uniqueID: 3726219877
     locked: 0
+  - name: Wall objects
+    uniqueID: 496401819
+    locked: 0
