@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
             default:
             return;
         }
+        if(Input.GetKeyDown(KeyCode.Tab)){
+             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     bool enemyTurnHandled=false;
     public void HandlePlayerTurn(){
@@ -97,11 +100,9 @@ public class GameManager : MonoBehaviour
         }
         return enemyTurnFinished;
     }
-
     public void HandleGameOver(){
         LevelLoader.instance.LoadScene(Loader.Scene.MainMenu);
     }
-
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration){
         floatingTextManager.Show(msg,fontSize,color,position,motion,duration);

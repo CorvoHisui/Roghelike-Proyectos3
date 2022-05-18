@@ -6,8 +6,9 @@ public class Pickable : Interactable
 {
     //public Item item;
     public Sprite hasInteractedIcon = null;
-    private inventory inventory;
+    //private inventory inventory;
     public GameObject itemButton;
+    /*
     public void Awake()
     {
         inventory=GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
@@ -20,6 +21,7 @@ public class Pickable : Interactable
         base.Interact();
         PickUp();
     }
+    
     void PickUp(){
         for (int i = 0; i < inventory.slots.Length; i++)
         {
@@ -41,4 +43,5 @@ public class Pickable : Interactable
         }
         
     }
+    */
 }
