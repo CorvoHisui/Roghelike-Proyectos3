@@ -14,4 +14,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/LevelOne.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Levels/Taberna caminos.unity
+    guid: 100e4f17150a1be489296763e2100579
+  - enabled: 1
+    path: Assets/Scenes/Tests/TEST 2-Mapa Caminos.unity
+    guid: 925da44d3bdca404291dfa0d1b38c064
+  - enabled: 1
+    path: Assets/Scenes/Levels/Taberna Bosque.unity
+    guid: 0781f416a6e16454fa9e4baaba07116b
+  - enabled: 1
+    path: Assets/Scenes/Tests/TEST 3-Mapa bosque.unity
+    guid: e46550dc10207fd448938cbaa4b9878f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Taberna ciudad.unity
+    guid: e56eaf0bfe673c1438d2d84da7441890
+  - enabled: 1
+    path: Assets/Scenes/Tests/TEST 4-Mapa ciudad.unity
+    guid: fb6439412878f3449b545531fc1daf86
+  - enabled: 1
+    path: Assets/Scenes/Menu/TetWin.unity
+    guid: f8f9e044a3f4ce648994f9e7907ae0f3
   m_configObjects: {}

@@ -27,8 +27,8 @@ public class CraftRecipeDatabase : MonoBehaviour
         recipes = new List<CraftRecipe>(){
             new CraftRecipe(3, 
             new int[]{
-                1, 0, 0,
-                2, 0, 0,
+                0, 0, 0,
+                1, 1, 2,
                 0, 0, 0
             })
         };
