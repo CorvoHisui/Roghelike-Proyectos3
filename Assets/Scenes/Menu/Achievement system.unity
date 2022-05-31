@@ -158,8 +158,8 @@ MonoBehaviour:
   - {fileID: 3004977348643187768, guid: 34fda7062b4f5464da167f0426f808b9, type: 3}
   - {fileID: 4618295060002178566, guid: 2cd014bbd6398ee4b80f648297eb38a8, type: 3}
   - {fileID: -1885575207757659844, guid: 5c078772ad07e5b4f867a857e562cf31, type: 3}
-  - {fileID: 21300000, guid: bf0984c390643ac43a77a7b90fb8f37d, type: 3}
-  - {fileID: 21300000, guid: 2ca488803e090c34da6784ea2d5cc427, type: 3}
+  - {fileID: 8692098715818667583, guid: 7a8babe1e3b60904d9357c8a9b105c9d, type: 3}
+  - {fileID: 5570481554812722691, guid: d9fcd54829215ad42a908f327d90b65d, type: 3}
   - {fileID: -5141713614659106287, guid: 7f6a81b489fafe7409d5d46bf82052e1, type: 3}
   - {fileID: -8260348148270030950, guid: 0b72816adefb26948a7e295435342d0f, type: 3}
   - {fileID: 3679317395259625715, guid: a2a005a66f0aad94c9d70ab7b57f704f, type: 3}
@@ -169,7 +169,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 925864cb8b6b0704981eccd273138038, type: 3}
   - {fileID: 21300000, guid: 2e8123c68c167ea47bb03d1de67a60cb, type: 3}
   visualAchievement: {fileID: 2339821873710118177, guid: 518057ed7520ec6468fe3257afca934c, type: 3}
-  unlockSprite: {fileID: 21300000, guid: d4d09db2cb81007499f3cbb5bd57690c, type: 3}
+  unlockSprite: {fileID: 21300000, guid: 0a5cf4fd1db6ecb4eaac93dc787ffd81, type: 3}
 --- !u!4 &64594947
 Transform:
   m_ObjectHideFlags: 0

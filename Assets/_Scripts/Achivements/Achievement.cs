@@ -67,7 +67,11 @@ public class Achievement
 
     public void LoadAchievement()
     {
-        unlocked = PlayerPrefs.GetInt(name) == 1 ? true : false;
+        if (PlayerPrefs.HasKey(name))
+        {
+            unlocked = PlayerPrefs.GetInt(name) == 1 ? true : false;
+        }
+        
         if (unlocked)
         {
             achievementRef.GetComponent<Image>().sprite = AchievemenManager.Instance.unlockSprite;

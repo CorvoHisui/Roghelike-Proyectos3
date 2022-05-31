@@ -30,7 +30,7 @@ public class AchievemenManager : MonoBehaviour
     }
     void Start()
     {
-        //PlayerPrefs.DeleteAll();//QUITAR
+        PlayerPrefs.DeleteAll();//QUITAR
         CreateAchievement("General","Mata un slime","Has acabado con un slime",0);
         CreateAchievement("General", "Mata 10 slimes", "Has acabado con 10 slimes",0);
         CreateAchievement("General", "Mata una rata", "Has acabado con una rata",1);
