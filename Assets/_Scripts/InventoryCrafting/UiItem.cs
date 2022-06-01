@@ -42,6 +42,7 @@ public class UiItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         }
     }
 
+    //grab Object
     public void OnPointerDown(PointerEventData eventData)
     {
         if (this.item != null)

@@ -6,7 +6,13 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused;
     public GameObject pauseMenu;
-    
+
+    public static bool isInventory;
+    public GameObject inventoryMenu;
+    void Start()
+    {
+        HideInventory();
+    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -17,6 +23,16 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.I)){
+            if(isInventory){
+                HideInventory();
+            }
+            else{
+                ShowInventory();
+            }
+        }
+        
     }
 
     public void Resume(){
@@ -31,5 +47,15 @@ public class PauseMenu : MonoBehaviour
     void Pause(){
         pauseMenu.SetActive(true);
         isPaused=true;
+    }
+
+    //si empieza apagado no funciona
+    void HideInventory(){
+        inventoryMenu.SetActive(false);
+        isInventory=false;
+    }
+    void ShowInventory(){
+        inventoryMenu.SetActive(true);
+        isInventory=true;
     }
 }

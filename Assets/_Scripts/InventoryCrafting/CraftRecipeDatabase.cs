@@ -25,12 +25,30 @@ public class CraftRecipeDatabase : MonoBehaviour
     }
     void BuildCraftRecepiDatabase(){
         recipes = new List<CraftRecipe>(){
-            new CraftRecipe(3, 
+            new CraftRecipe(9, 
+            new int[]{
+                0, 3, 0,
+                0, 1, 0,
+                0, 3, 0
+            }),
+            new CraftRecipe(10, 
+            new int[]{
+                0, 4, 0,
+                4, 5, 4,
+                0, 4, 0
+            }),
+            new CraftRecipe(11, 
+            new int[]{
+                0, 3, 0,
+                0, 2, 0,
+                0, 3, 0
+            }),
+            new CraftRecipe(12, 
             new int[]{
                 0, 0, 0,
                 1, 1, 2,
                 0, 0, 0
-            })
+            }),
         };
     }
 }

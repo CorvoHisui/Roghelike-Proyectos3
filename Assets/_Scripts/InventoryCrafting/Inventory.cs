@@ -17,9 +17,30 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         GiveItem(1);
+        GiveItem(1);
+
         GiveItem(2);
-        GiveItem(1);
-        GiveItem(1);
+        GiveItem(2);
+
+        GiveItem(3);
+        GiveItem(3);
+
+        GiveItem(4);
+        GiveItem(4);
+        GiveItem(4);
+        GiveItem(4);
+
+        GiveItem(5);
+        GiveItem(5);
+
+        GiveItem(6);
+        GiveItem(6);
+
+        GiveItem(7);
+        GiveItem(7);
+        
+        GiveItem(8);
+        GiveItem(8);
     }
     public void GiveItem(int id){
         Item itemToAdd = itemDatabase.GetItem(id);
