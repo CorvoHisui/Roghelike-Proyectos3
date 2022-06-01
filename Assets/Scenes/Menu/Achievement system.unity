@@ -170,6 +170,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2e8123c68c167ea47bb03d1de67a60cb, type: 3}
   visualAchievement: {fileID: 2339821873710118177, guid: 518057ed7520ec6468fe3257afca934c, type: 3}
   unlockSprite: {fileID: 21300000, guid: 0a5cf4fd1db6ecb4eaac93dc787ffd81, type: 3}
+  achievementParentOfBaseAchieveents: {fileID: 657394372}
+  earnCanvas: {fileID: 1051872839}
 --- !u!4 &64594947
 Transform:
   m_ObjectHideFlags: 0
