@@ -34,6 +34,16 @@ public class Achievement
     }
     private GameObject achievementRef;
 
+    private List<Achievement> depenedencies = new List<Achievement>();
+
+    private string child;
+    public string Child
+    {
+        get { return child; }
+        set { child = value; }
+    }
+
+    
     public Achievement(string name, string description, int spriteIndex, GameObject achievementRef)
     {
         this.name = name;
@@ -44,13 +54,22 @@ public class Achievement
         LoadAchievement();
     }
 
+    public void AddDependency(Achievement dependency)
+    {
+        depenedencies.Add(dependency);
+    }
+
     public bool EarnAchievement()
     {
-        if (!unlocked)
+        if (!unlocked && !depenedencies.Exists(x=>x.unlocked==false))
         {
             achievementRef.GetComponent<Image>().sprite = AchievemenManager.Instance.unlockSprite;
             unlocked = true;
             SaveAchievements(true);
+            if (child!=null)
+            {
+                AchievemenManager.Instance.EarnAchievement(child);
+            }
             return true;
         }
         return false;

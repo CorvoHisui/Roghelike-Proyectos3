@@ -18,6 +18,8 @@ public class AchievemenManager : MonoBehaviour
     private static AchievemenManager instance;
     internal Sprite unlockedSprite;
 
+    private int fadeTime = 2;
+
     [SerializeField]
     Transform achievementParentOfBaseAchieveents;
     [SerializeField]
@@ -37,7 +39,7 @@ public class AchievemenManager : MonoBehaviour
     }
     void Start()
     {
-        //PlayerPrefs.DeleteAll();//QUITAR
+        PlayerPrefs.DeleteAll();//QUITAR
         CreateAchievement("logro1","Mata un slime","Has acabado con un slime",0);
         CreateAchievement( "logro12", "Mata 10 slimes", "Has acabado con 10 slimes",0);
         CreateAchievement( "logro13", "Mata una rata", "Has acabado con una rata",1);
@@ -57,7 +59,7 @@ public class AchievemenManager : MonoBehaviour
         CreateAchievement( "logro117", "Supera el quinto nivel", "Acabaste con el castillo",10);
         CreateAchievement( "logro118", "¡Que aproveche!", "Has hecho tu primera comida",11);
         CreateAchievement( "logro119", "¡En tu cara!", "Arroja un objeto",12);
-        CreateAchievement( "logro120", "¡Completado!", "Consigue todos los logros",13);
+        CreateAchievement( "logro120", "¡Completado!", "Consigue todos los logros",13,new string[] { "Mata un slime", "Mata 10 slimes", "Mata una rata", "Mata 10 ratas", "Mata un ladron", "Mata 10 ladrones", "Mata una arana", "Mata 10 aranas", "Mata un guardia", "Mata 10 guardias", "Mata un guardia de elite", "Mata 10 guardias de elite", "Supera el primer nivel", "Supera el segundo nivel", "Supera el tercer nivel", "Supera el cuarto nivel", "Supera el quinto nivel", "¡Que aproveche!", "¡En tu cara!" });
     }
 
     // Update is called once per frame
@@ -80,7 +82,7 @@ public class AchievemenManager : MonoBehaviour
             GameObject achievement = (GameObject)Instantiate(visualAchievement);
             SetAchievementInfo(earnCanvas, achievement,title);
 
-            StartCoroutine(HideAchievement(achievement));
+            StartCoroutine(FadeAchievement(achievement));
         }
     }
 
@@ -90,7 +92,7 @@ public class AchievemenManager : MonoBehaviour
         Destroy(achievement);
     }
 
-    public void CreateAchievement(string AchievementName, string title,string description, int spriteIndex)
+    public void CreateAchievement(string AchievementName, string title,string description, int spriteIndex,string[]dependencies=null)
     {
         GameObject achievement = (GameObject) Instantiate(achievmentPrefab);
 
@@ -99,6 +101,16 @@ public class AchievemenManager : MonoBehaviour
         achievements.Add(title, newAchievement);
 
         SetAchievementInfo(achievementParentOfBaseAchieveents, achievement, title);
+
+        if (dependencies!=null)
+        {
+            foreach (string achievementTitle in dependencies)
+            {
+                Achievement dependency = achievements[achievementTitle];
+                dependency.Child = title;
+                newAchievement.AddDependency(dependency);
+            }
+        }
     }
 
     public void SetAchievementInfo(Transform parentOfAchievemnt, GameObject achievement,string title)
@@ -108,5 +120,30 @@ public class AchievemenManager : MonoBehaviour
         achievement.transform.GetChild(0).GetComponent<Text>().text = title;
         achievement.transform.GetChild(1).GetComponent<Text>().text = achievements[title].Description;
         achievement.transform.GetChild(2).GetComponent<Image>().sprite = sprites [achievements[title].SpriteIndex];
+    }
+
+    private IEnumerator FadeAchievement(GameObject achievement)
+    {
+        CanvasGroup canvasGroup = achievement.GetComponent<CanvasGroup>();
+        float rate = 5.0f / fadeTime;
+        int startAlpha = 0;
+        int endAlpha = 1;
+
+        for (int i = 0; i < 2; i++)
+        {
+            float progress = 0.0f;
+
+            while (progress < 1.0)
+            {
+                canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, progress);
+                progress += rate * Time.deltaTime;
+
+                yield return null;
+            }
+            yield return new WaitForSeconds(2);
+            startAlpha = 1;
+            endAlpha = 0;
+        }
+        Destroy(achievement);
     }
 }
