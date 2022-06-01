@@ -5,20 +5,36 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    AudioManager audioManager;
     public GameObject optionsScreen;
-    public void StartGame(){
+
+    private void Start()
+    {
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+        audioManager.Play("Menu");
+    }
+
+    public void StartGame()
+    {
         LevelLoader.instance.LoadScene(Loader.Scene.Taberna_1);
     }
-    public void OpenOptions(){
+    public void OpenOptions()
+    {
         optionsScreen.SetActive(true);
     }
-    public void CloseOptions(){
+    public void CloseOptions()
+    {
         optionsScreen.SetActive(false);
     }
-    public void QuitApp(){
-        
+    public void QuitApp()
+    {
+
         Application.Quit();
-        
+
     }
-    
+
 }

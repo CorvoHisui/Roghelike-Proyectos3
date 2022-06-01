@@ -21,7 +21,7 @@ public class EnemyAi : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        GameManager.instance.AddEnemyToList(this);
+        //GameManager.instance.AddEnemyToList(this);
     }
 
     // Update is called once per frame
@@ -46,10 +46,11 @@ public class EnemyAi : MonoBehaviour
         if(path==null){
             return;
         }
-        if(currentWaypoint>=path.vectorPath.Count){
+        if(currentWaypoint >= path.vectorPath.Count){
             reachedEndOfPath=true;
             return;
-        }else{
+        }
+        else{
             reachedEndOfPath=false;
         }
 

@@ -1,9 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerAction { None, Movimiento, Ataque, Consumo, Lanzado}
+    private PlayerAction currentAction=PlayerAction.None;
+
+    public void SetPlayerAction(PlayerAction newPlayerAction)
+    {
+        switch (newPlayerAction)
+        {
+            case PlayerAction.None:
+                break;
+            case PlayerAction.Movimiento:
+                if (CheckIfMovementIsPossible())
+                {
+                    currentAction = PlayerAction.Movimiento; 
+                }
+                break;
+            case PlayerAction.Ataque:
+                break;
+            case PlayerAction.Consumo:
+                break;
+            case PlayerAction.Lanzado:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private bool CheckIfMovementIsPossible()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void UpdateMovementData()
+    {
+        throw new NotImplementedException();
+    }
+
+    private bool CheckIfActionIsPossible(PlayerAction actionToCheck)
+    {
+        if(actionToCheck == PlayerAction.Movimiento)
+            {
+        }
+        throw new NotImplementedException();
+    }
+
     #region Movement
 
     public Transform movePoint;
@@ -38,10 +83,13 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    UnitWithTurn unitWithTurn;
     void Start()
     {
         movePoint.parent=null;
         lastDirectionPoint.parent=null;
+
+        unitWithTurn = GetComponent<UnitWithTurn>();
 
         currHealth=3;
         healthBar.SetMaxHealth(maxHealth);
@@ -49,7 +97,37 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        MoveMotor();
+        if (TurnManager.instance.CurrentState != GameState.PlayerTurn)
+        {
+            return;
+        }
+        //if (GameManager.instance.currState == GameManager.GameState.PlayerTurn)
+        //{
+        //    MoveMotor();
+        //}
+        //else
+        //{
+        //    return;
+        //}
+        switch (currentAction)
+        {
+            case PlayerAction.Movimiento:
+                MoveMotor();
+                break;
+            case PlayerAction.Ataque:
+                BasicAttack();
+                break;
+            case PlayerAction.Consumo:
+                break;
+            case PlayerAction.Lanzado:
+                break;
+            case PlayerAction.None:
+                break;
+            default:
+                break;
+        }
+        
+        
         
     }
     public void SetLastInteractable(GameObject _LastInteractable)
@@ -73,10 +151,11 @@ public class PlayerController : MonoBehaviour
 
         transform.position=Vector3.MoveTowards(transform.position,movePoint.position, moveSpeed*Time.deltaTime);
         lastDirectionPoint.position = Vector3.MoveTowards(lastDirectionPoint.position, movePoint.position + new Vector3(lastMovement.x, lastMovement.y, 0), 16 * Time.fixedDeltaTime);
- 
-        if (Vector3.Distance(transform.position, movePoint.position) >= .001f)
+
+        //change state
+        if (Vector3.Distance(transform.position, movePoint.position) <= .001f)
         {
-            GameManager.instance.currState=GameManager.GameState.EnemyTurn;
+            unitWithTurn.turnCompleted = true;
             return;
         }
         Vector3 lastPosition = transform.position;
@@ -92,8 +171,6 @@ public class PlayerController : MonoBehaviour
             
             movePoint.position += new Vector3(0f, movement.y, 0f);
             lastMovement=movement;
-
-            
         }
         
         //Check overlap
@@ -101,6 +178,8 @@ public class PlayerController : MonoBehaviour
 
             movePoint.position = lastPosition;
         }
+
+        
     }
 
     public void onPressAction()
