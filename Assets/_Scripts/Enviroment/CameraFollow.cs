@@ -7,9 +7,9 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float smoothSpeed=0.125f;
     public Vector3 offset;
-    private void Start()
+    private void Awake()
     {
-        FindObjectOfType<AudioManager>().Play("Tabernas");
+        target = FindObjectOfType<PlayerController>().transform;
     }
     void LateUpdate()
     {

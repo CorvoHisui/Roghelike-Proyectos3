@@ -8,6 +8,17 @@ public class PlayerController : MonoBehaviour
     public enum PlayerAction { None, Movimiento, Ataque, Consumo, Lanzado}
     private PlayerAction currentAction=PlayerAction.None;
 
+    #region Movement
+
+    public Transform movePoint;
+    public LayerMask stopMovementMask;
+    public LayerMask enemyMask;
+
+    public float moveSpeed = 5f;
+    Vector2 movement;
+
+    #endregion
+
     public void SetPlayerAction(PlayerAction newPlayerAction)
     {
         switch (newPlayerAction)
@@ -23,6 +34,7 @@ public class PlayerController : MonoBehaviour
             case PlayerAction.Ataque:
                 break;
             case PlayerAction.Consumo:
+                currentAction = PlayerAction.Consumo;
                 break;
             case PlayerAction.Lanzado:
                 break;
@@ -30,17 +42,25 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
     private bool CheckIfMovementIsPossible()
     {
-        throw new NotImplementedException();
-    }
+        Vector3 lastPosition = transform.position;
+        
 
+        //Check overlap
+        if (Physics2D.OverlapCircle(movePoint.position, .05f, stopMovementMask))
+        {
+
+            movePoint.position = lastPosition;
+            return false;
+        }
+        return true;
+        
+    }
     private void UpdateMovementData()
     {
         throw new NotImplementedException();
     }
-
     private bool CheckIfActionIsPossible(PlayerAction actionToCheck)
     {
         if(actionToCheck == PlayerAction.Movimiento)
@@ -48,17 +68,6 @@ public class PlayerController : MonoBehaviour
         }
         throw new NotImplementedException();
     }
-
-    #region Movement
-
-    public Transform movePoint;
-    public LayerMask stopMovementMask;
-    public LayerMask enemyMask;
-
-    public float moveSpeed = 5f;
-    Vector2 movement;
-
-    #endregion
 
     #region InteractSystem
     //Interaction System
@@ -101,14 +110,6 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        //if (GameManager.instance.currState == GameManager.GameState.PlayerTurn)
-        //{
-        //    MoveMotor();
-        //}
-        //else
-        //{
-        //    return;
-        //}
         switch (currentAction)
         {
             case PlayerAction.Movimiento:
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
                 BasicAttack();
                 break;
             case PlayerAction.Consumo:
+                ItemUsed();
                 break;
             case PlayerAction.Lanzado:
                 break;
@@ -126,10 +128,14 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-        
-        
-        
     }
+
+    private void ItemUsed()
+    {
+        unitWithTurn.turnCompleted = true;
+        currentAction = PlayerAction.None;
+    }
+
     public void SetLastInteractable(GameObject _LastInteractable)
     {
         if(_LastInteractable==null){
@@ -146,9 +152,28 @@ public class PlayerController : MonoBehaviour
     
 
     public void MoveMotor(){
-        movement.x=Input.GetAxisRaw("Horizontal");
-        movement.y=Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            movePoint.position += new Vector3(0f, 1f, 0f);
+            lastMovement = new Vector3(0f, 1f, 0f);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            movePoint.position += new Vector3(-1f, 0f, 0f);
+            lastMovement = new Vector3(-1f, 0f, 0f);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            movePoint.position += new Vector3(0f, -1f, 0f);
+            lastMovement = new Vector3(0f, -1f, 0f);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            movePoint.position += new Vector3(1f, 0f, 0f);
+            lastMovement = new Vector3(1f, 0f, 0f);
+        }
 
+        
         transform.position=Vector3.MoveTowards(transform.position,movePoint.position, moveSpeed*Time.deltaTime);
         lastDirectionPoint.position = Vector3.MoveTowards(lastDirectionPoint.position, movePoint.position + new Vector3(lastMovement.x, lastMovement.y, 0), 16 * Time.fixedDeltaTime);
 
@@ -156,30 +181,9 @@ public class PlayerController : MonoBehaviour
         if (Vector3.Distance(transform.position, movePoint.position) <= .001f)
         {
             unitWithTurn.turnCompleted = true;
+            currentAction = PlayerAction.None;
             return;
         }
-        Vector3 lastPosition = transform.position;
-        //Move point
-        if (Mathf.Abs(movement.x) == 1f){
-
-            movePoint.position += new Vector3(movement.x, 0f, 0f);
-            lastMovement=movement;
-
-            
-        }
-        else if (Mathf.Abs(movement.y) == 1f){
-            
-            movePoint.position += new Vector3(0f, movement.y, 0f);
-            lastMovement=movement;
-        }
-        
-        //Check overlap
-        if (Physics2D.OverlapCircle(movePoint.position, .05f, stopMovementMask)){
-
-            movePoint.position = lastPosition;
-        }
-
-        
     }
 
     public void onPressAction()
@@ -196,9 +200,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Enemy attacked");
     }
     
+    public void heal(int hp)
+    {
+        currHealth += hp;
+        healthBar.SetHealth(currHealth);
+    }
     public void TakeDamage(int damage){
         currHealth-=damage;
         healthBar.SetHealth(currHealth);
     }
+
 
 }

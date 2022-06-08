@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class Loader : MonoBehaviour
 {
     public static Loader instance=null;
+
     public enum Scene{
         MainMenu,
         Taberna_1,
         LevelOne,
+        Taberna_2,
+        TetWin,
     }
     void Awake()
     {

@@ -12,6 +12,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private string verticallAxis="Vertical";
 
+    public bool foodUsed = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -21,11 +23,6 @@ public class PlayerInput : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,14 +31,19 @@ public class PlayerInput : MonoBehaviour
         {
             ManageMovementInput();
         }
-            
+         
     }
 
     private void ManageMovementInput()
     {
-        if (Mathf.Abs(Input.GetAxisRaw(horizontalAxis)) >= 0.1f || Mathf.Abs(Input.GetAxisRaw(verticallAxis)) >= 0.1f)
+        if (Mathf.Abs(Input.GetAxisRaw(horizontalAxis)) == 1f || Mathf.Abs(Input.GetAxisRaw(verticallAxis)) == 1f)
         {
             GameManager.instance.playerController.SetPlayerAction(PlayerController.PlayerAction.Movimiento);
+            Debug.Log("changed player action");
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameManager.instance.playerController.SetPlayerAction(PlayerController.PlayerAction.Consumo);
         }
 
     }

@@ -45,29 +45,50 @@ public class UiItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
     //grab Object
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (this.item != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (selectedItem.item != null && !craftedItemSlot)
+            if (this.item != null)
             {
-            Item clone = new Item(selectedItem.item);
-            selectedItem.UpdateItem(this.item);
-            UpdateItem(clone);
+                if (selectedItem.item != null && !craftedItemSlot)
+                {
+                    Item clone = new Item(selectedItem.item);
+                    selectedItem.UpdateItem(this.item);
+                    UpdateItem(clone);
+                }
+                else if (selectedItem.item == null)
+                {
+                    selectedItem.UpdateItem(this.item);
+                    if (craftedItemSlot)
+                    {
+                        GetComponent<UiCraftResult>().CollectCraftResult(this.item);
+                    }
+                    UpdateItem(null);
+                }
             }
-            else if (selectedItem.item == null)
+            else if (selectedItem.item != null && !craftedItemSlot)
             {
-            selectedItem.UpdateItem(this.item);
-            if (craftedItemSlot)
-            {
-                GetComponent<UiCraftResult>().CollectCraftResult(this.item);
-            }
-            UpdateItem(null);
+                UpdateItem(selectedItem.item);
+                selectedItem.UpdateItem(null);
             }
         }
-        else if (selectedItem.item != null && !craftedItemSlot)
+        if (Input.GetMouseButtonDown(1))
         {
-            UpdateItem(selectedItem.item);
-            selectedItem.UpdateItem(null);
+            if (this.item != null) //clicking on item
+            {
+                if (selectedItem.item == null) //following empty
+                {
+                    Debug.Log("tried to use");
+                    Debug.Log(this.item.stats["Health"]);
+                    
+                    GameManager.instance.playerController.heal(this.item.stats["Health"]);
+                    UpdateItem(null);
+                    PlayerInput.instance.foodUsed = true;
+                }
+                
+            }
+
         }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Pickable : Interactable
 {
-    //public Item item;
+    public List<int> item= new List<int>();
+    public AudioManager audioManager;
     public Sprite hasInteractedIcon = null;
-    //private inventory inventory;
-    public GameObject itemButton;
-    /*
+    
     public void Awake()
     {
-        inventory=GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
         if(hasInteracted){
             GetComponent<SpriteRenderer>().sprite=hasInteractedIcon;
         }
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+        audioManager.Play("Cofre");
     }
     public override void Interact()
     {
@@ -23,15 +26,12 @@ public class Pickable : Interactable
     }
     
     void PickUp(){
-        for (int i = 0; i < inventory.slots.Length; i++)
+        for (int i = 0; i < item.Count; i++)
         {
-            if(inventory.isFull[i]==false){
-                //ADD item to inventory
-                inventory.isFull[i]=true;
-                Instantiate(itemButton, inventory.slots[i].transform);
-                break;
-            }
+            //AudioManager.instance.Play("Cofre");
+            GameManager.instance.playerController.gameObject.GetComponent<Inventory>().GiveItem(item[i]);
         }
+        
 
         if(hasInteractedIcon!=null){
             GetComponent<SpriteRenderer>().sprite=hasInteractedIcon;
@@ -43,5 +43,5 @@ public class Pickable : Interactable
         }
         
     }
-    */
+    
 }

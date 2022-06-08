@@ -26,8 +26,8 @@ public class ItemDatabase : MonoBehaviour
             }),
             new Item(2, "Huevo", "basic food",null, 
             new Dictionary<string, int> {
-                {"Health", -2},
-                {"Hunger", -1}
+                {"Health", 2},
+                {"Hunger", 1}
             }),
             new Item(3, "Pan", "basic food",null, 
             new Dictionary<string, int> {
@@ -46,17 +46,17 @@ public class ItemDatabase : MonoBehaviour
             }),
             new Item(6, "Trozo de slime", "basic food",null, 
             new Dictionary<string, int> {
-                {"Health", 2},
+                {"Health", -2},
                 {"Hunger", 3}
             }),
             new Item(7, "Diente de araña", "basic food",null, 
             new Dictionary<string, int> {
-                {"Health", 2},
+                {"Health", -2},
                 {"Hunger", 3}
             }),
             new Item(8, "Pata de rata", "basic food",null, 
             new Dictionary<string, int> {
-                {"Health", 2},
+                {"Health", -2},
                 {"Hunger", 3}
             }),
             new Item(9, "Sandwich", "basic food",null, 

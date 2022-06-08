@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
@@ -63,7 +64,9 @@ public class TurnManager : MonoBehaviour
         {
             if (currState == GameState.PlayerTurn && units[i].isPlayer)
             {
+                //Debug.Log(units[i].turnCompleted + " Player turn completed");
                 return units[i].turnCompleted;
+                
             }
 
             if (currState == GameState.EnemyTurn)

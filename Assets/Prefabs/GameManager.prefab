@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6613815578224580731}
   - component: {fileID: 6613815578224580730}
+  - component: {fileID: 1077902807}
+  - component: {fileID: 1077902809}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,8 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82957f5f3f25bce42bf14901c3689033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
   floatingTextManager: {fileID: 0}
-  turnDelay: 0.2
-  playerHP: 5
-  playersTurn: 1
-  enemies: []
+--- !u!114 &1077902807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613815578224580732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e7fb7353d98b947ab3e5eb47304c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currState: 0
+  units: []
+--- !u!114 &1077902809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613815578224580732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22672525dee871b4aace7be48ef008cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
