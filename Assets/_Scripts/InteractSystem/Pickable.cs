@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pickable : Interactable
 {
     public List<int> item= new List<int>();
-    public AudioManager audioManager;
     public Sprite hasInteractedIcon = null;
     
     public void Awake()
@@ -13,11 +12,8 @@ public class Pickable : Interactable
         if(hasInteracted){
             GetComponent<SpriteRenderer>().sprite=hasInteractedIcon;
         }
-        if (audioManager == null)
-        {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
-        audioManager.Play("Cofre");
+        
+        
     }
     public override void Interact()
     {
@@ -35,7 +31,8 @@ public class Pickable : Interactable
 
         if(hasInteractedIcon!=null){
             GetComponent<SpriteRenderer>().sprite=hasInteractedIcon;
-            hasInteracted=true;
+            AudioManager.instance.Play("Cofre");
+            hasInteracted =true;
         }
         else{
             Destroy(gameObject);

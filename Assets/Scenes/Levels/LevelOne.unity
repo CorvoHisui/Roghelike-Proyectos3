@@ -396,6 +396,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2aa8cb1ccc553469054d5a1cac4fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &786336774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7794423696752252464, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252464, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7313495038bbbd543878f3bd75d99c8f, type: 3}
+    - target: {fileID: 7794423696752252464, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: sounds.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252464, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: Music_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252464, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252464, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252465, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
 --- !u!114 &939342893 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7239364573604388565, guid: 2ab2eba04a7f6bf4da38980c339760ac, type: 3}
@@ -492,6 +573,7 @@ GameObject:
   - component: {fileID: 1337991991}
   - component: {fileID: 1337991990}
   - component: {fileID: 1337991989}
+  - component: {fileID: 1337991993}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -513,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 408313559}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: -7}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!81 &1337991990
 AudioListener:
   m_ObjectHideFlags: 0
@@ -579,6 +661,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337991993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337991988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafb41caf0ba64b4aa783de79eb0c4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  song: Music_1
 --- !u!1001 &1399059215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29281,11 +29376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049796, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.5
+      value: 29.5
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049796, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049796, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29325,19 +29420,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049798, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049798, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049798, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_Offset.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3969316613784049798, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
       propertyPath: m_Offset.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f51eff90f8c950d4bae8bcd57ff511d7, type: 3}
@@ -29367,6 +29462,10 @@ PrefabInstance:
     - target: {fileID: 3813334969986874815, guid: 51504eafd8572a04da1a2c9ecf654b5f, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813334969986874815, guid: 51504eafd8572a04da1a2c9ecf654b5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813334970817726791, guid: 51504eafd8572a04da1a2c9ecf654b5f, type: 3}
       propertyPath: m_RootOrder
@@ -29589,7 +29688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1977557891313655173, guid: 50a13c2075406d14895bc08593f4e0cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2844049489604976622, guid: 50a13c2075406d14895bc08593f4e0cd, type: 3}
       propertyPath: m_IsActive
@@ -29642,7 +29741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIewg6UmUWwIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzqVjkwyQ3lqTkB6SMKGZXHxRpBXWIEsefQRIhv/elWxjSicnlrdvd99+yJ9EatcA88YureQPhgP5MSLRJt9Gg/Me9nRj9Fp+QM95ldxXkUQT55l6aRDPY5gzNXgr2U+9UZGcIRi0FMbWt3wDhXHeISyocoAua3yM1gh9jsgef8Y3MeSA1mQWrQ+0brLREU0G2oMdqD2xp7WsoJmidQM8Sh7IV9OOfTVNNI3NdIwonBmlpOuUEH9oUqcFbVzAPpDAJcXOUvns+w0CFchN5aPO8/AnIRz4TpSlh4W0OKI2L/ll2rnV1G1bZe9UhVhpep1EtTkf/nOP8+QW1tT3fdk8iyV8Jdn2mR4Ydf5srufwYlCep/nsqNrSNwWvFehHs7QmaI5Ob0MMDQ4mi+HvqbOiArYd8FbqBRiar7cTezim5veFkvVbGuR1C6yVSQNPuweLq/mNgtNluC4FolHFi4M/dHN+Qp3jTlrn0dV1qaO8NxNspJI7NOLgWfCFsRrseYIGNFX+sMI0/nKDF76vo+5ofCxd8c7Xv4GLkAQP/Cy7cK3M7rQsV5ndA7jqKXgl9Xmy6HnEQRVG6/bC3IU3xq2DFZTBsKFNkPzf2yJzlvH5bMpmQgg6YfPx9dWcCSponk8meTYTJB2f1NgoVatWaTcfXJsekms8tP4jMlpa2qRr55bulvKjNm5gSi3MmlkA/dRmOAkHi0XwXfJbLnFCa/Be6rRw8lkSZdgWeHlKVKZOb/fe0nLIUpJGvhsfkZIU6atRkgifjnll4V3CLhbvkx3J8S9QSwMEFAAACAgAAAgh7HXbRqttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJFskGKhblZsnlaWlqiUbKFromxRXJaYlqioaGRkaGBeZpSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7CDpSZRbAgAAFAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7HXbRqttAAAAeAAAAAkAJAAAAAAAAAAAAAAAqAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABgAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIezYCnkRWgIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HpmkgvbUmkB6SMCGdXHwR0gprkCWPPgIkw3/vSrYxpZMTy9u3u28/5A8itWuAeWMXVvIHw4H8GJFoky+jwXkPe7oxeiXfoee8Su6rSKKJ80y9NIjnMcyZGryV7KfeqEjOEAxaCmPrO76BwjjvEBZUOUCXNT5Ga4Q+RmSPP1e3MeSA1ngSrXe0brPREU0G2oMdqD2xp7WsoJmidQM8Sh7Ik3HH/t7SNDbTMaJwZpSSrlNC/KFJnRa0cQH7QAKXFDtL5bOvtwhUIDeVjzrPw5+EcOA7UZYeZtLiiNq85Jdp51ZTt22VvVEVYqWb6ySqzfnwn/sqT25hTX3fl82zWMJXkm2f6YFR58/meg7PBuV5ms+Oqi1dK3itQD+ahTVBc3R6G2JocDCeDX9PnRUVsO2At1IvwNB8vp3YwzE1vy+UrNdpkNctsFImDTztHiyu5jcKTpfhuhSIRhV/HLzQzfkJdY65tM6jq+tSR3lrE2ykkjkacfAs+MJYDfY8QQOaKn9YYhp/ucEL3+dRcxofS1e88/Vv4CIkwQM/yy5cS7M7LctVZvcArnoKXkl9nix6HnFQhdG6vTB34Y1xq2AFZTBsaBMk//e2yJRlfDq5YRMhBB2z6dX1tykTVNA8H4/zbCJIOj6psVGqlq3Sbj64Nj0k13ho/UdktLC0SdfOLd0t5Htt3MCUWpgVswD6qc1wEg4Wi+C75Hdc4oRW4L3UaeHkoyTKsC3w8pSoTJ3e7b2l5ZClJI18Mz4iJSnSV6MkET4d89LCm4RdLN4nO5LjX1BLAwQUAAAICAAACCHsddtGq20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kkWyQYqFuVmyeVpaWqJRsoWuibFFclpiWqKhoZGRoYF5mlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHs2Ap5EVoCAAAUBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsddtGq20AAAB4AAAACQAkAAAAAAAAAAAAAACnAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAF8DAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 

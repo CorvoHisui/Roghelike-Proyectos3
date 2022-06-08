@@ -12,7 +12,15 @@ public class Loader : MonoBehaviour
         Taberna_1,
         LevelOne,
         Taberna_2,
+        LevelTwo,
+        Taberna_3,
+        LevelThree,
+        Taberna_4,
+        LevelFour,
+        Taberna_5,
+        LevelFive,
         TetWin,
+        GameOver,
     }
     void Awake()
     {

@@ -204,6 +204,10 @@ public class PlayerController : MonoBehaviour
     {
         currHealth += hp;
         healthBar.SetHealth(currHealth);
+        if (currHealth <= 0)
+        {
+            FindObjectOfType<LevelLoader>().LoadScene(Loader.Scene.GameOver);
+        }
     }
     public void TakeDamage(int damage){
         currHealth-=damage;
