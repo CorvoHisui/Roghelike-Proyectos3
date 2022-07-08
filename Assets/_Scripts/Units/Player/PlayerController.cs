@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    public void SetPlayerAction(PlayerAction newPlayerAction)
-    {
+    public void SetPlayerAction(PlayerAction newPlayerAction){
         switch (newPlayerAction)
         {
             case PlayerAction.None:
@@ -32,6 +31,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case PlayerAction.Ataque:
+                currentAction = PlayerAction.Ataque;
                 break;
             case PlayerAction.Consumo:
                 currentAction = PlayerAction.Consumo;
@@ -42,8 +42,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-    private bool CheckIfMovementIsPossible()
-    {
+    private bool CheckIfMovementIsPossible(){
         Vector3 lastPosition = transform.position;
         
 
@@ -56,17 +55,6 @@ public class PlayerController : MonoBehaviour
         }
         return true;
         
-    }
-    private void UpdateMovementData()
-    {
-        throw new NotImplementedException();
-    }
-    private bool CheckIfActionIsPossible(PlayerAction actionToCheck)
-    {
-        if(actionToCheck == PlayerAction.Movimiento)
-            {
-        }
-        throw new NotImplementedException();
     }
 
     #region InteractSystem
@@ -93,19 +81,18 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     UnitWithTurn unitWithTurn;
-    void Start()
-    {
+
+    void Start(){
         movePoint.parent=null;
         lastDirectionPoint.parent=null;
 
         unitWithTurn = GetComponent<UnitWithTurn>();
 
-        currHealth=3;
+        currHealth=maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currHealth);
     }
-    void Update()
-    {
+    void Update(){
         if (TurnManager.instance.CurrentState != GameState.PlayerTurn)
         {
             return;
@@ -130,14 +117,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ItemUsed()
-    {
+    private void ItemUsed(){
         unitWithTurn.turnCompleted = true;
         currentAction = PlayerAction.None;
     }
 
-    public void SetLastInteractable(GameObject _LastInteractable)
-    {
+    public void SetLastInteractable(GameObject _LastInteractable){
         if(_LastInteractable==null){
             lastInteractable=null;
         }
@@ -150,7 +135,6 @@ public class PlayerController : MonoBehaviour
             
     }
     
-
     public void MoveMotor(){
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -177,17 +161,21 @@ public class PlayerController : MonoBehaviour
         transform.position=Vector3.MoveTowards(transform.position,movePoint.position, moveSpeed*Time.deltaTime);
         lastDirectionPoint.position = Vector3.MoveTowards(lastDirectionPoint.position, movePoint.position + new Vector3(lastMovement.x, lastMovement.y, 0), 16 * Time.fixedDeltaTime);
 
+        
+
+        
         //change state
         if (Vector3.Distance(transform.position, movePoint.position) <= .001f)
         {
+            transform.position = new Vector3(Mathf.Round(transform.position.x * 2f) * 0.5f, Mathf.Round(transform.position.y * 2f) * 0.5f, Mathf.Round(transform.position.z * 2f) * 0.5f);
+
             unitWithTurn.turnCompleted = true;
             currentAction = PlayerAction.None;
             return;
         }
     }
 
-    public void onPressAction()
-    {
+    public void onPressAction(){
         if (lastInteractable != null)
         {
             lastInteractable.Interact();
@@ -197,11 +185,13 @@ public class PlayerController : MonoBehaviour
     }
     
     public void BasicAttack(){
-        Debug.Log("Enemy attacked");
+        Debug.Log("Attack");
+
+        unitWithTurn.turnCompleted = true;
+        currentAction = PlayerAction.None;
     }
     
-    public void heal(int hp)
-    {
+    public void heal(int hp){
         currHealth += hp;
         healthBar.SetHealth(currHealth);
         if (currHealth <= 0)
@@ -209,9 +199,19 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<LevelLoader>().LoadScene(Loader.Scene.GameOver);
         }
     }
+
     public void TakeDamage(int damage){
+
+        Debug.Log("player Damaged");
+
         currHealth-=damage;
+
         healthBar.SetHealth(currHealth);
+
+        if (currHealth <= 0)
+        {
+            Debug.Log("GameOver");
+        }
     }
 
 

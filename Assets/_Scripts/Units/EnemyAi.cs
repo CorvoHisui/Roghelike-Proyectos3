@@ -26,6 +26,8 @@ public class EnemyAi : MonoBehaviour
 
     UnitWithTurn unitWithTurn;
 
+    public int health = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class EnemyAi : MonoBehaviour
                 FindPath();
                 break;
             case EnemyAction.Ataque:
+                currentAction = EnemyAction.Ataque;
                 break;
             default:
                 break;
@@ -70,12 +73,22 @@ public class EnemyAi : MonoBehaviour
                 MoveMotor();
                 break;
             case EnemyAction.Ataque:
+                AttackPlayer();
                 break;
             default:
                 break;
         }
-    }
 
+        
+    }
+    public void checkHealth()
+    {
+        if (health <= 0)
+        {
+            GameManager.instance.slimeCounter++;
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     public void FindPath(){
         seeker.StartPath(rb.position, target.position, OnPathComplete);
@@ -88,6 +101,7 @@ public class EnemyAi : MonoBehaviour
 ;
         }
     }
+
     Vector2 FindNextPosition()
     {
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
@@ -114,6 +128,7 @@ public class EnemyAi : MonoBehaviour
 
         return nextPosition;
     }
+    
     void MoveMotor(){
         if(path==null){
             Debug.Log("move motor called path null");
@@ -126,18 +141,17 @@ public class EnemyAi : MonoBehaviour
 
         if (Vector2.Distance(transform.position, movementNextPosition) < nextWaypointDistance)
         {
+            
             reachedEndOfPath = true;
 
         }
         else
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Debug.Log(direction);
+
             Vector2 movementVelocity = direction * speed * Time.deltaTime;
 
             rb.MovePosition(rb.position + movementVelocity);
-            //transform.position += Vector3.one;
-
 
             reachedEndOfPath = false;
         }
@@ -146,14 +160,29 @@ public class EnemyAi : MonoBehaviour
 
         if(distance<nextWaypointDistance){
             currentWaypoint++;
+            reachedEndOfPath = true;
         }
         if (reachedEndOfPath)
         {
 
-            Debug.Log("aqui fuerzo enemigo al grid");
+            //Debug.Log("aqui fuerzo enemigo al grid");
+
+            transform.position = movementNextPosition;
+
             unitWithTurn.turnCompleted = true;
             currentAction = EnemyAction.None;
             return;
         }
+    }
+
+    void AttackPlayer()
+    {
+        //attack player
+        GameManager.instance.playerController.TakeDamage(1);
+
+        //attack player
+
+        unitWithTurn.turnCompleted = true;
+        currentAction = EnemyAction.None;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SaveManager : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
+        SceneManager.LoadScene(data.activeScene);
         GameManager.instance.playerController.healthBar.SetHealth(data.health);
 
         Vector3 position;
@@ -19,6 +21,10 @@ public class SaveManager : MonoBehaviour
         position.y = data.position[1];
         position.z = data.position[2];
 
+        Debug.Log(position);
         GameManager.instance.playerController.transform.position = position;
+
+        
+
     }
 }

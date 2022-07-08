@@ -23,9 +23,18 @@ public class EnemyInput : MonoBehaviour
 
         if (actionPerformed==false && TurnManager.instance.CurrentState == GameState.EnemyTurn)
         {
-            enemy.SetEnemyAction(EnemyAi.EnemyAction.Movimiento);
-            actionPerformed = true;
-            Debug.Log("changed Enemy action");
+            if(Vector2.Distance(transform.position, GameManager.instance.playerController.transform.position) > 1)
+            {
+                enemy.SetEnemyAction(EnemyAi.EnemyAction.Movimiento);
+                actionPerformed = true;
+                
+            }
+            else
+            {
+                enemy.SetEnemyAction(EnemyAi.EnemyAction.Ataque);
+                actionPerformed = true;
+                Debug.Log("changed Enemy action");
+            }
         }
     }
 }

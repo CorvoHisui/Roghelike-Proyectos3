@@ -10,9 +10,12 @@ public class PlayerData
     public Scene scene;
 
     public float[] position;
+    public string activeScene;
+    public List<Item> inventory = new List<Item>();
 
     public PlayerData(GameManager manager)
     {
+        activeScene = SceneManager.GetActiveScene().name;
         health = manager.playerController.currHealth;
         scene = SceneManager.GetActiveScene();
 

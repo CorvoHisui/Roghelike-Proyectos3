@@ -62,18 +62,18 @@ public class AchievemenManager : MonoBehaviour
         CreateAchievement( "logro120", "¡Completado!", "Consigue todos los logros",13,new string[] { "Mata un slime", "Mata 10 slimes", "Mata una rata", "Mata 10 ratas", "Mata un ladron", "Mata 10 ladrones", "Mata una arana", "Mata 10 aranas", "Mata un guardia", "Mata 10 guardias", "Mata un guardia de elite", "Mata 10 guardias de elite", "Supera el primer nivel", "Supera el segundo nivel", "Supera el tercer nivel", "Supera el cuarto nivel", "Supera el quinto nivel", "¡Que aproveche!", "¡En tu cara!" });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            EarnAchievement("Mata un slime");
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            EarnAchievement("Supera el tercer nivel");
-        }
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.W))
+    //    {
+    //        EarnAchievement("Mata un slime");
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.D))
+    //    {
+    //        EarnAchievement("Supera el tercer nivel");
+    //    }
+    //}
 
     public void EarnAchievement(string title)
     {

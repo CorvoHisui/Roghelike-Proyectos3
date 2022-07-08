@@ -38,11 +38,15 @@ public class PlayerInput : MonoBehaviour
         if (Mathf.Abs(Input.GetAxisRaw(horizontalAxis)) == 1f || Mathf.Abs(Input.GetAxisRaw(verticallAxis)) == 1f)
         {
             GameManager.instance.playerController.SetPlayerAction(PlayerController.PlayerAction.Movimiento);
-            Debug.Log("changed player action");
+            
         }
         if (Input.GetMouseButtonDown(1))
         {
             GameManager.instance.playerController.SetPlayerAction(PlayerController.PlayerAction.Consumo);
+        }
+        if(Input.GetMouseButtonDown(2))
+        {
+            GameManager.instance.playerController.SetPlayerAction(PlayerController.PlayerAction.Ataque);
         }
 
     }

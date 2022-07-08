@@ -22,6 +22,10 @@ public class MainMenu : MonoBehaviour
     {
         LevelLoader.instance.LoadScene(Loader.Scene.Taberna_1);
     }
+    public void LoadGame()
+    {
+        GameManager.instance.GetComponent<SaveManager>().LoadPlayer();
+    }
     public void OpenOptions()
     {
         optionsScreen.SetActive(true);

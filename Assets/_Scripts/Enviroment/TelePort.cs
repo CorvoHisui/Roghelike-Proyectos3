@@ -14,7 +14,10 @@ public class TelePort : Interactable
         Teleport();
     }
     void Teleport(){
-        
+        if(lvl == Loader.Scene.Taberna_2)
+        {
+            AchievemenManager.Instance.EarnAchievement("Supera el primer nivel");
+        }
         LevelLoader.instance.LoadScene(lvl);
     }
 }

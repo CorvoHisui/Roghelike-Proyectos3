@@ -2894,6 +2894,7 @@ GameObject:
   - component: {fileID: 1501389978}
   - component: {fileID: 1501389977}
   - component: {fileID: 1501389976}
+  - component: {fileID: 1501389979}
   m_Layer: 0
   m_Name: caldero_0
   m_TagString: Untagged
@@ -2985,6 +2986,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1501389979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501389975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d10e2a463268f4584fe75f1f58e584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTriggerInstant: 0
+  hasInteractedIcon: {fileID: 0}
 --- !u!4 &1518446860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7794423696752252467, guid: 903280d63a32f6348a25b6310422b48f, type: 3}
@@ -5968,6 +5983,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6613815578224580730, guid: fb97ef3c49956884dbd6b197a842a928, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 1512809257932507782, guid: 14ec15623b9f0164e8cfc0684438c492, type: 3}
     - target: {fileID: 6613815578224580730, guid: fb97ef3c49956884dbd6b197a842a928, type: 3}
       propertyPath: playerController
       value: 

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2079848600811338269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079848600811338271}
+  - component: {fileID: 2079848600811338270}
+  m_Layer: 0
+  m_Name: AchievementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079848600811338271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079848600811338269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1445.567, y: 982.4647, z: -1056.5607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2079848600811338270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079848600811338269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7622c8800d20aa1498823917f6157512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievmentPrefab: {fileID: 5387153311874109058, guid: dde2246a0cb9d6b42a13cc76927e35e7, type: 3}
+  sprites:
+  - {fileID: -4783339661161215410, guid: def60b8bd2d25704994b111d06264b63, type: 3}
+  - {fileID: 3004977348643187768, guid: 34fda7062b4f5464da167f0426f808b9, type: 3}
+  - {fileID: 4618295060002178566, guid: 2cd014bbd6398ee4b80f648297eb38a8, type: 3}
+  - {fileID: -1885575207757659844, guid: 5c078772ad07e5b4f867a857e562cf31, type: 3}
+  - {fileID: 8692098715818667583, guid: 7a8babe1e3b60904d9357c8a9b105c9d, type: 3}
+  - {fileID: 5570481554812722691, guid: d9fcd54829215ad42a908f327d90b65d, type: 3}
+  - {fileID: -5141713614659106287, guid: 7f6a81b489fafe7409d5d46bf82052e1, type: 3}
+  - {fileID: -8260348148270030950, guid: 0b72816adefb26948a7e295435342d0f, type: 3}
+  - {fileID: 3679317395259625715, guid: a2a005a66f0aad94c9d70ab7b57f704f, type: 3}
+  - {fileID: -4344265426554411112, guid: 6238de289da3df84ab8da5d00511ff8d, type: 3}
+  - {fileID: -3688405389917717926, guid: 9378f555ae01e1e4cb09ca9863cf4bf5, type: 3}
+  - {fileID: 21300000, guid: 3c974d6242bddd94b977ee121b1f6d18, type: 3}
+  - {fileID: 21300000, guid: 925864cb8b6b0704981eccd273138038, type: 3}
+  - {fileID: 21300000, guid: 2e8123c68c167ea47bb03d1de67a60cb, type: 3}
+  visualAchievement: {fileID: 2339821873710118177, guid: 518057ed7520ec6468fe3257afca934c, type: 3}
+  unlockSprite: {fileID: 21300000, guid: 0a5cf4fd1db6ecb4eaac93dc787ffd81, type: 3}
+  achievementParentOfBaseAchieveents: {fileID: 0}
+  earnCanvas: {fileID: 0}

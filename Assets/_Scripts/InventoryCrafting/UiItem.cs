@@ -88,6 +88,33 @@ public class UiItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
             }
 
         }
+        if (Input.GetMouseButtonDown(2))
+        {
+            if (this.item != null) //clicking on item
+            {
+                if (selectedItem.item == null) //following empty
+                {
+                    Debug.Log("tried to use");
+                    
+                    int health = this.item.stats["Health"];
+                    Debug.Log(health);
+
+                    //Shoot this.item
+                    GameObject bullet = Instantiate(GameManager.instance.bulletPrefab, GameManager.instance.playerController.lastDirectionPoint.position, GameManager.instance.playerController.lastDirectionPoint.rotation);
+
+                    bullet.GetComponent<SpriteRenderer>().sprite = this.item.icon;
+                    bullet.GetComponent<Bullet>().damage = health;
+                    
+                    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+                    rb.AddForce((GameManager.instance.playerController.lastDirectionPoint.position - GameManager.instance.playerController.transform.position)* 10f, ForceMode2D.Impulse);
+
+                    UpdateItem(null);
+                    PlayerInput.instance.foodUsed = true;
+                }
+
+            }
+        }
 
     }
 
